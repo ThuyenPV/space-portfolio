@@ -7,6 +7,7 @@ class AppResponsive extends StatelessWidget {
     required this.tablet,
     required this.desktop,
   }) : super(key: key);
+
   final Widget mobile;
   final Widget tablet;
   final Widget desktop;
