@@ -17,16 +17,13 @@ class HeaderTab extends StatelessWidget {
         padding: const EdgeInsets.symmetric(horizontal: 46, vertical: 4),
         child: Row(
           children: [
-            Text(
-              'Wiliam',
-              style: GoogleFonts.actor(
-                fontSize: 22,
-                color: Colors.white70,
-                fontWeight: FontWeight.bold,
+            GestureDetector(
+              onTap: () {
+                Navigator.pushNamed(context, '/');
+              },
+              child: Lottie.asset(
+                'assets/json/space.json',
               ),
-            ),
-            Lottie.asset(
-              'assets/json/space.json',
             ),
             const Spacer(),
             _buildActionItem(

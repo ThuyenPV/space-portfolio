@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:lottie/lottie.dart';
 import 'package:portfolio/core/widgets/portfolio_app_bar.dart';
+import 'package:portfolio/test.dart';
 
 import 'components/header_tab.dart';
 
@@ -13,8 +14,9 @@ class DesktopScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: GestureDetector(
-        child: Container(
+      body: MouseRegion(
+        cursor: SystemMouseCursors.click,
+        child: GestureDetector(
           child: LayoutBuilder(
             builder: (context, constraints) => SingleChildScrollView(
               scrollDirection: Axis.horizontal,
