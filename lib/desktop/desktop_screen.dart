@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:lottie/lottie.dart';
-import 'package:portfolio/core/widgets/portfolio_app_bar.dart';
-import 'package:portfolio/test.dart';
 
 import 'components/header_tab.dart';
 

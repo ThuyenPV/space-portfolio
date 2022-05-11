@@ -2,8 +2,27 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:lottie/lottie.dart';
 
-class HeaderTab extends StatelessWidget {
+class HeaderTab extends StatefulWidget {
   const HeaderTab({Key? key}) : super(key: key);
+
+  @override
+  State<HeaderTab> createState() => _HeaderTabState();
+}
+
+class _HeaderTabState extends State<HeaderTab> {
+  late ValueNotifier<int> _currentTabIndex;
+
+  @override
+  void initState() {
+    _currentTabIndex = ValueNotifier<int>(0);
+    super.initState();
+  }
+
+  @override
+  void dispose() {
+    _currentTabIndex.dispose();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -28,20 +47,20 @@ class HeaderTab extends StatelessWidget {
             const Spacer(),
             _buildActionItem(
               title: 'Home',
-              color: Colors.white70,
+              index: 0,
             ),
             _buildActionItem(
               title: 'About Me',
-              color: const Color(0xff6012A4),
+              index: 1,
             ),
             _buildActionItem(
               title: 'Portfolio',
-              color: const Color(0xff6012A4),
+              index: 2,
             ),
             _buildActionItem(
               title: 'Contact',
-              color: const Color(0xff6012A4),
               hasBorder: true,
+              index: 3,
             ),
           ],
         ),
@@ -51,24 +70,39 @@ class HeaderTab extends StatelessWidget {
 
   _buildActionItem({
     required String title,
-    required Color color,
+    required int index,
     bool hasBorder = false,
+    GestureTapCallback? onTap,
   }) {
-    return Container(
-      height: 56,
-      alignment: Alignment.center,
-      margin: const EdgeInsets.only(right: 46, top: 8, bottom: 8),
-      padding: const EdgeInsets.symmetric(vertical: 6, horizontal: 12),
-      decoration: BoxDecoration(
-        border: hasBorder ? Border.all(color: Colors.white60, width: 1) : null,
-        borderRadius: BorderRadius.circular(6),
-      ),
-      child: Text(
-        title,
-        textAlign: TextAlign.center,
-        style: TextStyle(
-          color: color,
-        ),
+    return GestureDetector(
+      onTap: () {
+        _currentTabIndex.value = index;
+      },
+      child: ValueListenableBuilder(
+        valueListenable: _currentTabIndex,
+        builder: (_, int tabSelected, __) {
+          return Container(
+            height: 56,
+            alignment: Alignment.center,
+            margin: const EdgeInsets.only(right: 46, top: 8, bottom: 8),
+            padding: const EdgeInsets.symmetric(vertical: 6, horizontal: 12),
+            decoration: BoxDecoration(
+              border: hasBorder
+                  ? Border.all(color: Colors.white60, width: 1)
+                  : null,
+              borderRadius: BorderRadius.circular(6),
+            ),
+            child: Text(
+              title,
+              textAlign: TextAlign.center,
+              style: TextStyle(
+                color: tabSelected == index
+                    ? Colors.white70
+                    : const Color(0xff6012A4),
+              ),
+            ),
+          );
+        },
       ),
     );
   }
