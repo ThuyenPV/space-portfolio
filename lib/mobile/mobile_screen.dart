@@ -1,3 +1,4 @@
+// Flutter imports:
 import 'package:flutter/material.dart';
 
 class MobileScreen extends StatelessWidget {
@@ -10,8 +11,8 @@ class MobileScreen extends StatelessWidget {
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            const Text(
+          children: const [
+            Text(
               'You have pushed the button this many times:',
               style: TextStyle(
                 fontSize: 20,
