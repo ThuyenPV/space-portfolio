@@ -1,0 +1,32 @@
+# .github/workflows/dart.yml
+
+name: build
+
+on:
+  push:
+    branches: [master]
+  pull_request:
+    branches: [master]
+
+jobs:
+  preview:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-java@v1
+        with:
+          java-version: "12.x"
+      - uses: subosito/flutter-action@v1
+        with:
+          channel: dev
+      - run: flutter pub get
+      - run: flutter pub run build_runner build
+      - run: flutter build web --release
+      - uses: FirebaseExtended/action-hosting-deploy@v0
+        with:
+          repoToken: "${{ secrets.GITHUB_TOKEN }}"
+          firebaseServiceAccount: "${{ secrets.FIREBASE_SERVICE_ACCOUNT_MY_PROJECT_ID }}"
+          projectId: MY_PROJECT_ID
+        env:
+          FIREBASE_CLI_PREVIEWS: hostingchannels

@@ -1,3 +1,4 @@
+import 'dart:html' as html;
 // Flutter imports:
 import 'package:flutter/material.dart';
 
@@ -41,7 +42,7 @@ class _HeaderTabState extends State<HeaderTab> {
           children: [
             GestureDetector(
               onTap: () {
-                Navigator.pushNamed(context, '/');
+                html.window.location.reload();
               },
               child: Lottie.asset(
                 'assets/json/space.json',
@@ -87,7 +88,7 @@ class _HeaderTabState extends State<HeaderTab> {
           return Container(
             height: 56,
             alignment: Alignment.center,
-            margin: const EdgeInsets.only(right: 46, top: 8, bottom: 8),
+            margin: const EdgeInsets.symmetric(horizontal: 23, vertical: 8),
             padding: const EdgeInsets.symmetric(vertical: 6, horizontal: 12),
             decoration: BoxDecoration(
               border: hasBorder
