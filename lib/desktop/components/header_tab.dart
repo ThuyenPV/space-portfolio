@@ -1,10 +1,15 @@
+// Dart imports:
 import 'dart:html' as html;
+
 // Flutter imports:
 import 'package:flutter/material.dart';
 
 // Package imports:
 import 'package:google_fonts/google_fonts.dart';
 import 'package:lottie/lottie.dart';
+
+// Project imports:
+import 'package:portfolio/core/screens/experience_portfolio.dart';
 
 class HeaderTab extends StatefulWidget {
   const HeaderTab({Key? key}) : super(key: key);
@@ -81,6 +86,7 @@ class _HeaderTabState extends State<HeaderTab> {
     return GestureDetector(
       onTap: () {
         _currentTabIndex.value = index;
+        _headerTabNavigation(index);
       },
       child: ValueListenableBuilder(
         valueListenable: _currentTabIndex,
@@ -109,5 +115,19 @@ class _HeaderTabState extends State<HeaderTab> {
         },
       ),
     );
+  }
+
+  void _headerTabNavigation(int index) {
+    switch (index) {
+      case 0:
+        html.window.location.reload();
+        break;
+      case 2:
+        Navigator.push(context,
+            MaterialPageRoute(builder: (context) => ExperiencePortfolio()));
+        break;
+      default:
+        break;
+    }
   }
 }

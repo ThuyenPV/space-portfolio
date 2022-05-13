@@ -4,8 +4,10 @@ import 'package:flutter/material.dart';
 // Package imports:
 import 'package:google_fonts/google_fonts.dart';
 import 'package:lottie/lottie.dart';
-import 'package:portfolio/desktop/components/header_tab.dart';
 import 'package:url_launcher/url_launcher.dart';
+
+// Project imports:
+import 'package:portfolio/desktop/components/header_tab.dart';
 
 class MainPortfolio extends StatelessWidget {
   const MainPortfolio({Key? key}) : super(key: key);

@@ -1,8 +1,8 @@
 // Flutter imports:
 import 'package:flutter/material.dart';
 
-// Package imports:
-import 'package:portfolio/core/widgets/main_portfolio.dart';
+// Project imports:
+import 'package:portfolio/core/widgets/experience_description.dart';
 
 class DesktopScreen extends StatelessWidget {
   const DesktopScreen({
